@@ -1,0 +1,21 @@
+RECOMENDACIÓN FINAL - EXAMEN MLOps
+====================================
+
+MODELO RECOMENDADO: MLP Mínima (10)
+
+JUSTIFICACIÓN:
+- Mejor F1-Score: 0.4003
+- Accuracy competitiva: 0.4995
+- Mayor robustez operacional
+- Facilidad de mantenimiento
+
+MÉTRICAS BASELINE:
+- Accuracy: 0.4995
+- F1-Score: 0.4003
+- Log-Loss: 1.0128
+
+PIPELINE COMPLETO IMPLEMENTADO:
+- Limpieza exhaustiva de datos
+- Preprocesamiento automático
+- Modelo entrenado y evaluado
+- Inferencia sobre test_inferencia.csv
