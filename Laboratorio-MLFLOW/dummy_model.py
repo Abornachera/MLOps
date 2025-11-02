@@ -1,0 +1,1 @@
+def predict(x): return 'respuesta generada'
