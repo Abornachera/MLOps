@@ -1,0 +1,7 @@
+.env
+docker-contenedorENV/
+mlruns/
+mlartifacts/
+__pycache__/
+*.pyc
+.DS_Store

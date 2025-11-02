@@ -1,0 +1,8 @@
+docker-contenedorENV/
+.env
+mlruns/
+__pycache__/
+.git/
+.gitignore
+.dockerignore
+.DS_Store

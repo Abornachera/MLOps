@@ -1,0 +1,93 @@
+Taller: App de Traducción con Docker 
+Descripción general
+
+Construirás una aplicación de traducción de texto que usa un modelo generativo (Gen-AI) a través del SDK compatible (p. ej. OpenAI ↔ Gemini), registra cada interacción con MLflow Tracking, y se empaqueta y despliega solo con imágenes y contenedores Docker (sin docker-compose). Además deberás publicar la imagen de la app en Docker Hub y demostrar ejecución remota.
+
+Requisitos obligatorios
+
+La app debe exponer una interfaz web con Gradio donde el usuario:
+
+ingrese un texto fuente,
+
+seleccione el idioma objetivo,
+
+reciba la traducción generada por el modelo.
+
+Cada interacción (prompt) debe registrarse en MLflow incluyendo, como mínimo:
+
+texto original,
+
+idioma objetivo,
+
+texto traducido generado,
+
+timestamp,
+
+métricas opcionales (latencia, longitud de respuesta).
+
+Todo debe correr en contenedores Docker individuales (un contenedor para la app y otro para el servidor MLflow), sin usar docker-compose.
+
+Debes construir la imagen local, ejecutar contenedores, taggear y subir la imagen de la app a Docker Hub, y demostrar que la imagen se puede ejecutar en otra máquina (pasando la API key por variable de entorno).
+
+Entregables (obligatorios)
+
+Capturas de pantalla: UI de Gradio con una traducción y la entrada correspondiente en la UI de MLflow (con al menos 1 run).
+
+Nombre del repo en Docker Hub con la imagen publicada (p. ej. tu_usuario/traductor-genai:1.0.0).
+
+Documento breve (máx. 1 página) que explique: arquitectura (contenedores y puertos), cómo pasar la API key, comandos principales usados (build, run, tag, push, pull), y observaciones sobre latencia y calidad de traducción.
+
+Estructura del trabajo (partes)
+Parte A — App de traducción (desarrollo local)
+
+Diseñar la interfaz Gradio (campo texto, selector idioma, botón traducir, área de resultado).
+
+Integrar llamadas al SDK compatible para obtener la traducción generada.
+
+Probar localmente sin Docker hasta que funcione.
+
+Parte B — MLflow Tracking (obligatorio)
+
+Levantar un servidor MLflow en contenedor separado.
+
+En la app, al generar una traducción, crear un run en MLflow que registre:
+
+parámetros: idioma_objetivo, modelo, lenguaje_origen (si aplica), prompt_hash (opcional),
+
+métricas: latency_ms, len_response, (opcionales),
+
+artifacts: (opcional) guardar un txt con la pareja original/traducción.
+
+Verificar que los runs aparecen en la UI de MLflow.
+
+Parte C — Dockerización sin docker-compose
+
+Crear Dockerfile para la app (base Python, instalar deps, exponer puerto 7860).
+
+Crear Dockerfile o usar imagen oficial para MLflow server (montar volumen para persistencia).
+
+Ejecutar contenedores y asegurar que la app apunte al servidor MLflow usando la URL del contenedor MLflow (por nombre de host cuando ambos corren en la misma red Docker) — todo manejado con comandos docker network/docker run (no compose).
+
+Parte D — Publicación en Docker Hub y ejecución remota
+
+Hacer login en Docker Hub, taggear la imagen de la app y docker push.
+
+En otra máquina, docker pull y ejecutar la app pasando la API key como variable de entorno; verificar que las traducciones se registren en el MLflow remoto (o en el servidor MLflow que levantes remotamente).
+
+Criterios de evaluación
+
+Funcionamiento: interfaz Gradio traduce correctamente usando Gen-AI. (30%)
+
+MLflow: cada interacción queda registrada (params, métricas, artifacts). (30%)
+
+Docker: imágenes construidas, subidas a Docker Hub y ejecutables remotamente. (25%)
+
+Documentación: entregables claros (screenshots, repo, pasos). (15%)
+
+Restricciones y buenas prácticas (pedir cumplir)
+
+No incluir claves dentro de imágenes ni en repositorios públicos. Pasar la API key como variable de entorno al ejecutar el contenedor.
+
+Registrar latencia y tamaño de respuesta en MLflow para poder comparar runs.
+
+Mantener el proyecto reproducible: indicar comandos exactos para build/run/push/pull en el documento entregable.
