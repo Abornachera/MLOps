@@ -1,0 +1,46 @@
+>>> Basado en un problema de clasificación binaria, ¿qué significa obtener un F1-score de 0.89?
+El F1-score es un mejora del metricu Fmeasure (F1) que se basa en una métrica más ancha y general, pero que también tiene su propio mejora. El F1-score de un modelo de 
+clasificación binaria ajustado al dataset de entrenamiento usando el metricu F1 es 0.89, que significa que el modelo asigna una predicción más buena (más alto o más 
+bajo) para la base de entrenamiento que la predicción del modelo ajustado a esa misma base.
+
+Un F1-score completo tiene los siguientes puntos:
+
+- Calidad: El mejor score que un modelo pudo obtener en la competencia, si es que hubiera participado.
+- Confianza: La probabilidad de que una predicción del modelo se ha hecho correctamente sobre la base de entrenamiento.
+- Escala: La métrica más ancha y general que se puede usar para comparar los modelos ajustados a las bases de entrenamiento y testeo.
+- Ajuste: El méjora del metricu F1 que se ha obtenido al ajustar el modelo a la base de entrenamiento.
+
+La F1-score no solo es una medida de calidad, sino también un mejora general. Cuando el score F1 es 0.89 o mayor, significa que hay un mejor conjunto de predicciones que 
+los modelos más bajos y altos que se han evaluado en comparación a la base de entrenamiento. Es decir, un modelo mejorado tendrá una mejor calidad de predicción que un 
+modelo que no ha sido ajustado al dataset.
+
+>>> En un dataset de 41 features, ¿por qué una red neuronal podría tener mejor accuracy de validación (0.858) que una regresión logística (0.848)?
+La diferencia en la calidad de predicción entre una red neuronal y una regresión logística es debido a las diferentes métricas utilizadas para evaluar y comparar los 
+modelos. La métrica de entropía F1-score de una red neuronal puede ser superior al del modelo de regresión logística, ya que la F1-score en un modelo de red neuronal se 
+asigna a la predicción de cada uno de sus 41 características independientemente, mientras que en un modelo de regresión logística solo se usan los valores de una 
+característica.
+
+La F1-score también tiene la ventaja de ser más general y ampliamente utilizable entre diferentes entrenamientos, ya que las propiedades de predicción pueden variar 
+mucho en cada entrenamiento. La métrica de calidad de la predicción puede depender de varios factores, incluyendo el grado de sobreajuste del modelo, el tipo y la 
+cantidad de datos usados para entrenamiento, así como la distribución de los datos y la geometría de la red neuronal.
+
+En este caso, una red neuronal tiene un mejor rendimiento en las validaciones de cada dataset, porque las características tienen una mayor significancia para la 
+predicción del resultado. Además, el conjunto de entrenamiento aceptable es más ampliamente disponible y puede ser mucho más complejo que el conjunto de entrenamiento 
+usado para los modelos de regresión logística.
+
+En conclusion, la red neuronal tiene una mayor calidad de predicción en las validaciones de cada dataset, ya que puede asignar la probabilidad a las características del 
+modelo y su calidad es más ampliamente utilizable entre diferentes entrenamientos.
+
+>>> Mi regresión logística obtuvo un F1-score de 0.894, pero la red neuronal obtuvo 0.884. ¿Por qué la red neuronal tendría un F1 más bajo pero un accuracy más alto?
+Cuando se trata de las métricas de calidad de predicción (F1-score y accuracy) para los modelos, las mejores áreas que interés a una aplicación de regresión logística 
+son F1-score y accuracy, respectivamente. 
+
+El F1-score es un mejora del metricu F1, que se basa en una métrica más anchas y general, pero también tiene su propio mejora. El F1-score de la red neuronal es menor al 
+de la regresión logística, pero aun así, puede ser más adecuado para determinadas aplicaciones de regressión. 
+
+La predicción de una red neuronal suele ser más efectiva y precisa que una predicción de una regresión logística. Es por ello que las métricas de calidad de las 
+predicciones, incluyendo F1-score, se han asociado a la predicción de regressiones y es probable que sea más adecuada para aquellas aplicaciones en donde un modelo 
+regresivo sea apropiadamente adecuado.
+
+Una red neuronal tendría un F1 más bajo y un accuracy más alto al igual que una regresión logística, pero el F1-score sería inferior al de la regresión y podrían suceder 
+algún error en determinadas aplicaciónes donde una regresión no sea adecuada.

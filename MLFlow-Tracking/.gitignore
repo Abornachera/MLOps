@@ -1,0 +1,14 @@
+/mlruns/
+/MLFlowTracking/
+
+.DS_Store
+._*
+Thumbs.db
+.Trashes
+.Spotlight-V100
+
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+.cache/
