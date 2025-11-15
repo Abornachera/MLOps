@@ -1,0 +1,36 @@
+
+services:
+  app-traductor:
+    build: .
+    container_name: app-traductor
+    ports:
+      - "7860:7860"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - MLFLOW_TRACKING_URI=http://mlflow-server:5000
+    networks:
+      - traductor-net
+    depends_on:
+      - mlflow-server
+    volumes:               
+      - mlflow-artifacts-data:/mlflow/artifacts
+
+  mlflow-server:
+    image: ghcr.io/mlflow/mlflow:v2.13.0
+    container_name: mlflow-server
+    ports:
+      - "5001:5000"
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
+    volumes:
+      - mlflow-db-data:/mlflow
+      - mlflow-artifacts-data:/mlflow/artifacts
+    networks:
+      - traductor-net
+
+volumes:
+  mlflow-db-data:
+  mlflow-artifacts-data:
+
+networks:
+  traductor-net:
+    driver: bridge

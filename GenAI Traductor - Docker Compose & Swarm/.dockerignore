@@ -1,0 +1,22 @@
+.git
+.gitignore
+.dockerignore
+.DS_Store
+.vscode
+ComposeSwarm/
+venv/
+env/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+mlruns/
+mlartifacts/
+mlflow.db
+docker-compose.yml
+docker-stack.yml
+Dockerfile
+README.md
+Taller - Traductor.docx
+ScreenshotsTraductor/
